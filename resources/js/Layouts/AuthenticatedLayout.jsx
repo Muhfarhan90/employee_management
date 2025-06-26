@@ -48,6 +48,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Employee Salary
                                 </NavLink>
+                                <NavLink
+                                    href={route("employee-salary.calculate")}
+                                    active={route().current("employee-salary.calculate")}
+                                >
+                                    Calculate Salary
+                                </NavLink>
                             </div>
                         </div>
 

@@ -1,14 +1,9 @@
 <?php
 
-use App\Http\Controllers\Emp_presenceController;
-use App\Http\Controllers\Emp_salaryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmpPresenceController;
 use App\Http\Controllers\EmpSalaryController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Emp_presence;
-use App\Models\Emp_salary;
-use App\Models\EmpPresence;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,8 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/employee', EmployeeController::class);
-    Route::resource('/employee-presence', Emp_presenceController::class);
-    Route::resource('/employee-salary', Emp_salaryController::class);
+    Route::resource('/employee-presence', EmpPresenceController::class);
+    Route::resource('/employee-salary', EmpSalaryController::class);
+    Route::get('/employee-salary-calculate', [EmpSalaryController::class, 'calculate'])->name('employee-salary.calculate');
 });
 
 require __DIR__.'/auth.php';

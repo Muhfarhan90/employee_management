@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Emp_salary extends Model
+class EmpSalary extends Model
 {
     use HasFactory;
 
@@ -22,4 +22,14 @@ class Emp_salary extends Model
         'loan',
         'total_salary',
     ];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\EmpSalaryFactory::new();
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Emp_presence extends Model
+class EmpPresence extends Model
 {
     use HasFactory;
 
@@ -18,4 +18,13 @@ class Emp_presence extends Model
         'late_in',
         'early_out',
     ];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\EmpPresenceFactory::new();
+    }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 }
