@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('address', 100)->nullable();
+            $table->string('phone', 25)->nullable();
+            $table->string('user_picture')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('employee');
     }
 };
